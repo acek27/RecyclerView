@@ -13,9 +13,17 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdapter.GirdViewHolder> {
+public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdapter.GridViewHolder> {
     private Context context;
     private ArrayList<President> listPresident;
+
+    private ArrayList<President> getListPresident() {
+        return listPresident;
+    }
+
+    public void setListPresident(ArrayList<President> listPresident) {
+        this.listPresident = listPresident;
+    }
 
     public GridPresidentAdapter(Context context) {
         this.context = context;
@@ -23,13 +31,13 @@ public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdap
 
     @NonNull
     @Override
-    public GirdViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_president, parent, false);
         return new GridViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GirdViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GridViewHolder holder, int position) {
         Glide.with(context)
                 .load(getListPresident().get(position).getPhoto())
                 .apply(new RequestOptions().override(350, 550))
@@ -41,26 +49,9 @@ public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdap
         return getListPresident().size();
     }
 
-    private ArrayList<President> getListPresident() {
-        return listPresident;
-    }
-
-    public void setListPresident(ArrayList<President> listPresident) {
-        this.listPresident = listPresident;
-    }
-
-    public class GirdViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imgPhoto;
-
-        public GirdViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
-
-    private class GridViewHolder extends GirdViewHolder {
+    class GridViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;
-
-        public GridViewHolder(View itemView) {
+        GridViewHolder(View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
         }

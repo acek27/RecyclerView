@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         rvCategory.setAdapter(listPresidentAdapter);
     }
 
-    private void showRecyclerGrid() {
+    private void showRecyclerGrid(){
         rvCategory.setLayoutManager(new GridLayoutManager(this, 2));
         GridPresidentAdapter gridPresidentAdapter = new GridPresidentAdapter(this);
         gridPresidentAdapter.setListPresident(list);

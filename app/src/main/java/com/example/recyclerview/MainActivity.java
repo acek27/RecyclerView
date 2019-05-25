@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         gridPresidentAdapter.setListPresident(list);
         rvCategory.setAdapter(gridPresidentAdapter);
     }
+    private void showRecyclerCardView(){
+        rvCategory.setLayoutManager(new LinearLayoutManager(this));
+        CardViewPresidentAdapter cardViewPresidentAdapter = new CardViewPresidentAdapter(this);
+        cardViewPresidentAdapter.setListPresident(list);
+        rvCategory.setAdapter(cardViewPresidentAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 showRecyclerGrid();
                 break;
             case R.id.action_cardview:
+                showRecyclerCardView();
                 break;
         }
         return super.onOptionsItemSelected(item);
